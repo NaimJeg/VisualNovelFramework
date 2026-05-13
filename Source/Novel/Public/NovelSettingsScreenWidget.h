@@ -8,8 +8,8 @@
 
 class UComboBoxString;
 class USlider;
-class USoundMix;
-class USoundClass;
+class UNovelGameUserSettings; 
+class UNovelStorySubsystem;
 
 UCLASS()
 class NOVEL_API UNovelSettingsScreenWidget : public UUserWidget
@@ -18,9 +18,13 @@ class NOVEL_API UNovelSettingsScreenWidget : public UUserWidget
 
 protected:
     virtual void NativeConstruct() override;
+    virtual void NativeDestruct() override;
 
     UPROPERTY(meta = (BindWidget))
     UComboBoxString* CB_WindowMode;
+
+    UPROPERTY(meta = (BindWidget))
+    UComboBoxString* CB_Resolution;
 
     UPROPERTY(meta = (BindWidget))
     USlider* Slider_MasterVolume;
@@ -31,22 +35,12 @@ protected:
     UPROPERTY(meta = (BindWidget))
     USlider* Slider_SFXVolume;
 
-    
-    UPROPERTY(EditAnywhere, Category = "Audio Settings")
-    USoundMix* GlobalSoundMix;
-
-    UPROPERTY(EditAnywhere, Category = "Audio Settings")
-    USoundClass* MasterSoundClass;
-
-    UPROPERTY(EditAnywhere, Category = "Audio Settings")
-    USoundClass* BGMSoundClass;
-
-    UPROPERTY(EditAnywhere, Category = "Audio Settings")
-    USoundClass* SFXSoundClass;
-
 
     UFUNCTION()
     void OnWindowModeChanged(FString SelectedItem, ESelectInfo::Type SelectionType);
+
+    UFUNCTION()
+    void OnResolutionChanged(FString SelectedItem, ESelectInfo::Type SelectionType);
 
     UFUNCTION()
     void OnMasterVolumeChanged(float Value);
@@ -58,5 +52,13 @@ protected:
     void OnSFXVolumeChanged(float Value);
 
 private:
-    void SetVolume(USoundClass* TargetClass, float Volume);
+
+    UFUNCTION()
+    void OnSliderReleased();
+
+    UPROPERTY()
+    UNovelGameUserSettings* UserSettings;
+
+    UPROPERTY()
+    UNovelStorySubsystem* StorySys;
 };

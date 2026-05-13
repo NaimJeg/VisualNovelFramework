@@ -13,6 +13,7 @@ class NOVEL_API UNovelTitleScreenWidget : public UUserWidget
 
 protected:
     virtual void NativeConstruct() override;
+    virtual void NativeDestruct() override;
 
     UPROPERTY(meta = (BindWidget))
     UButton* Btn_Continue;

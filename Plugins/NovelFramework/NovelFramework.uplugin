@@ -1,0 +1,16 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "0.1.0",
+  "FriendlyName": "Novel Framework",
+  "Description": "Reusable visual-novel runtime and optional UMG presentation.",
+  "Category": "Narrative",
+  "CanContainContent": true,
+  "IsBetaVersion": true,
+  "Modules": [
+    { "Name": "NovelRuntime", "Type": "Runtime", "LoadingPhase": "Default" },
+    { "Name": "NovelUMG", "Type": "Runtime", "LoadingPhase": "Default" },
+    { "Name": "NovelEditor", "Type": "Editor", "LoadingPhase": "PostEngineInit" },
+    { "Name": "NovelTests", "Type": "Editor", "LoadingPhase": "PostEngineInit" }
+  ]
+}

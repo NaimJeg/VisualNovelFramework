@@ -18,6 +18,10 @@
 	],
 	"Plugins": [
 		{
+			"Name": "NovelFramework",
+			"Enabled": true
+		},
+		{
 			"Name": "OnlineSubsystemGooglePlay",
 			"Enabled": false,
 			"SupportedTargetPlatforms": [

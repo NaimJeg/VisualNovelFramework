@@ -2,7 +2,8 @@
 
 
 #include "NovelGameMode.h"
-#include "NovelStorySettings.h"
+#include "NovelLog.h"
+#include "NovelPresentationSettings.h"
 #include "Blueprint/UserWidget.h"
 
 ANovelGameMode::ANovelGameMode()
@@ -19,7 +20,7 @@ void ANovelGameMode::BeginPlay()
 		PC->SetInputMode(FInputModeUIOnly());
 		PC->SetShowMouseCursor(true);
 
-		if (const UNovelStorySettings* Settings = GetDefault<UNovelStorySettings>())
+		if (const UNovelPresentationSettings* Settings = GetDefault<UNovelPresentationSettings>())
 		{
 			if (UClass* MenuClass = Settings->RootScreenClass.LoadSynchronous())
 			{
@@ -31,7 +32,7 @@ void ANovelGameMode::BeginPlay()
 			}
 			else
 			{
-				UE_LOG(LogTemp, Error, TEXT("GameMode: RootScreenClass is not set in Story Settings!"));
+				UE_LOG(LogNovel, Error, TEXT("GameMode failed to create root screen. Reason=RootScreenClass is not set in Presentation Settings."));
 			}
 		}
 	}
